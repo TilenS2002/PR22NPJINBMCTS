@@ -1,10 +1,9 @@
-# Statistika okoliščin prometnih nesreč v Sloveniji
+# Statistika okoliščin prometnih nesreč v Sloveniji v letu 2021 in 2022
+***
+**Problem:** Prometne nesreče so velik povzročitelj fizičnih poškodb in smrti v Sloveniji.
 
-Problem: Prometne nesreče so pogost in hud problem!
+**Cilj seminaske naloge:** Kako lastnosti (starost, prisotnost alkohola) udeležencev vplivajo na prometno nesrečo? Katere so slovenske regije, ki izstopajo s številom prometnih nesreč? Nesreče v splošnem ter kakšne so njihove posledice? Kakšne so fizične posledice udeležencev prometnih nesreč? Ali tip ceste, material cestišča in vremenske razmere povzročijo večje število prometnih nesreč? Ali gostota prometa pripomore k večji verjetnosti pojava nesreče? Ali se je po COVID-19 (v letu 2021), zaradi ponovne narasti gostote prometa povečalo število nesreč? Kako se je v splošnem, spremenile lastnosti prometnih nesreč 2021 in 2022? Na ta vprašanja bi radi odgovorili tekom seminarske naloge in iz baze podatkov izčrpali ključne statistike za napoved verjetnosti prometih nesreč po danih okoliščinah.
 
-Cilj/uprasanja: Kaj je največji faktor(starost, alkohol, vreme, cestišče...) za prometno nesrečo? Kraji z največ prometnimi nesrečami? Nesreče skozi čas (kraji kjer so se zgodile, vplivi, kdu je ta hujši)? Kateri faktorji so najpogosteje prisotni v prometni nesreči? Iz teh podatkov bi radi izluščili uporabne statistike za napoved verjetnosti prometih nesreč po okoliščinah.
+**Oblika uporabljenih podatkov:** Uporabljeni sta dve večji bazi podatkov. Prva vsebuje podatke prometnih nesrečah po Sloveniji v letu 2022, ki jo zajema 35 atributov in 18714 primerov. Za primerjavo pa je uporabljena baza podatkov prometnih nesreč po Sloveniji v letu 2021, z enakim številom atributov in primerljivim številom primerov.
 
-Vir: https://podatki.gov.si/dataset/mnzpprometne-nesrece-od-leta-2009-dalje
-
-Oblika podatkov: večja podatkovna baza, ki vsebuje vse lokacije, okoliščine, poškodbe voznikov,... skozi leta v prometnih nesrečah po Sloveniji.
-
+**Vir podatkovne baze:** https://podatki.gov.si/dataset/mnzpprometne-nesrece-od-leta-2009-dalje
