@@ -26,3 +26,31 @@ print(f"zjutraj: {len(morning_df)/ skupaj * 100:.2f}%")
 print(f"popoldne: {len(afternoon_df)/ skupaj * 100:.2f}%")
 print(f"zvečer: {len(evening_df)/ skupaj * 100:.2f}%")
 
+
+
+## vizualizacija iz katere vidimo da je največ nesreč popovdne, izstopa pa petek popoldne
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+cas_df['time_range'] = pd.cut(cas_df['UraPN'].apply(lambda x: x.hour*60 + x.minute),
+                              bins=[0, morning_end.hour*60 + morning_end.minute, 
+                                    afternoon_end.hour*60 + afternoon_end.minute, 
+                                    1440],
+                              labels=['morning', 'afternoon', 'evening'],
+                              right=False)
+
+cas_df['day'] = pd.to_datetime(cas_df['DatumPN'], format='%d.%m.%Y').dt.day_name()
+
+
+heatmap_df = cas_df.pivot_table(index='time_range', columns='day', values='UraPN', aggfunc=len)
+heatmap_df = heatmap_df.reindex(['morning', 'afternoon', 'evening'], axis=0)
+heatmap_df = heatmap_df.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], axis=1)
+
+sns.set(font_scale=1.2)
+fig, ax = plt.subplots(figsize=(10,7))
+sns.heatmap(heatmap_df, cmap='Blues', annot=True, fmt='d', cbar=False, ax=ax)
+ax.set_xlabel('')
+ax.set_ylabel('')
+ax.set_title('Number of Accidents by Time of Day and Day of Week', fontsize=16, pad=20)
+plt.tight_layout()
+plt.show()

@@ -4,7 +4,7 @@ import pandas as pd
 # za ključ je uporabljena 'ZaporednaStevilkaOsebeVPN', ki preko vseh baz predstavlja enako nesrečo.
 
 #preberemo celotno tabelo podatkov
-df = pd.read_csv('baze\pn2022.csv', delimiter=';')
+df = pd.read_csv('baze/pn2022.csv', delimiter=';')
 
 #      KOORDINATE NESREČ      #
 #   Nova tabela vsebuje koordinato x in y kraja nesreče, za takšen pristop smo se odločili predvsem zarai vizualizacije, kjer lahko nesreče predstavimo na mapi slovenije.
