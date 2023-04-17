@@ -1,3 +1,7 @@
+# POROČILO SEMINARSKE
+
+### Ločevanje podatkov za obdelavo
+```python
 import pandas as pd
 
 # preberemo celotno tabelo podatkov
@@ -46,5 +50,4 @@ osebe_df.to_csv('baze/manjse/Osebe.csv', index=False)
 #na splošno
 splosno_df=df[['ZaporednaStevilkaOsebeVPN', 'KlasifikacijaNesrece']]
 splosno_df.to_csv('baze/manjse/Splosno.csv', index=False)
-
-
+```
