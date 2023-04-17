@@ -20,10 +20,10 @@ Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komen
 
 ### Izvedene analize:
 
-#### Opomba: vsaka analiza je vsebovana v svoji datoteki!
+#### Opomba: Vsaka analiza je vsebovana v svoji datoteki!
 
 <!-- pogledu kaj so tipi posledic pri pn, določu barve, pobarvu lokacije tiste barve kukr je tip posledic -->
-**posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah. 
+**Posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah. 
 Vsebovanih je 5 kategorij: 
 - 0 - Brez poškodbe, 
 - 1 - Lažja telesna poškodba, 
@@ -33,14 +33,22 @@ Vsebovanih je 5 kategorij:
 Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako dobimo predstavo v katerih delih Slovenije je prišlo do lažjih/hujših prometnih nesreč.
 
 <!-- uzeu use prometne in jih fuknu u eno mapo -->
-**pogostost prometnih nesreč po sloveniji:** 
+**Pogostost prometnih nesreč po sloveniji:** 
 
-**vremenske okoliščine pri prometnih nesrečah:**
+<!--  -->
+**Vremenske okoliščine pri prometnih nesrečah:** 
 
-**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:**
+<!--  -->
+**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:** 
 
 ```python
-# tle bo koda od analize podatkov
+# tle bo morde koda od analize podatkov
 ```
 
 ### Glavne ugotovitve in rezultati:
+
+#### Ugotovitve:
+še pride
+
+#### Rezultati:
+še pride
