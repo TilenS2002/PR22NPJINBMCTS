@@ -25,20 +25,21 @@ Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komen
 #### Analize podatkov:
 
 <!-- pogledu kaj so tipi posledic pri pn, določu barve, pobarvu lokacije tiste barve kukr je tip posledic -->
-**Posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah. 
+**Posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah.  
 Vsebovanih je 5 kategorij: 
 - 0 - Brez poškodbe, 
 - 1 - Lažja telesna poškodba, 
 - 2 - Huda telesna poškodba, 
 - 3 - Smrt, 
-- 4 - Brez poškodbe-UZ (zelo podobno 0, uporabljata isto barvo)
+- 4 - Brez poškodbe-UZ (zelo podobno 0, uporabljata isto barvo)  
+
 Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako dobimo predstavo v katerih delih Slovenije je prišlo do lažjih/hujših prometnih nesreč.
 
 <!-- uzeu use prometne in jih fuknu u eno mapo -->
 **Pogostost prometnih nesreč po sloveniji:** 
 
 <!--  -->
-**Vremenske okoliščine pri prometnih nesrečah:** 
+**Vremenske okoliščine pri prometnih nesrečah:** Ogledali smo si kakšno je bilo vreme, ko se je zgodila prometna nesreča.  
 Vsebovanih je 7 kategorij: 
 - 0 - Jasno, 
 - 1 - Veter, 
@@ -46,7 +47,8 @@ Vsebovanih je 7 kategorij:
 - 3 - Deževno, 
 - 4 - Sneg, 
 - 5 - Toča, 
-- 6 - Megla
+- 6 - Megla  
+
 Tudi tukaj smo vsaki kategoriji določili svojo barvo in nesreče označili po lokacijah. Tako lahko iz grafa razberemo, v kakšnem vremenu so se zgodile nesreče in ali je na katerih lokacijah imelo vreme večji vpliv kot drugje.
 
 <!--  -->
