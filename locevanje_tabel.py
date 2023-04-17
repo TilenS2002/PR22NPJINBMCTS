@@ -35,7 +35,13 @@ faktorji_df= df[['ZaporednaStevilkaOsebeVPN', 'VremenskeOkoliscine', 'StanjeProm
 faktorji_df.to_csv('baze/manjse/FaktorCest.csv', index=False)
 
 # faktorji osebe
+
 osebniF_df= df[['ZaporednaStevilkaOsebeVPN', 'UporabaVarnostnegaPasu', 'VrednostAlkotesta', 'VrednostStrokovnegaPregleda']]
+osebniF_df['VrednostAlkotesta'] = osebniF_df['VrednostAlkotesta'].str.replace(",",".")
+osebniF_df['VrednostStrokovnegaPregleda'] = osebniF_df['VrednostStrokovnegaPregleda'].str.replace(",",".")
+
+osebniF_df['VrednostAlkotesta'] = osebniF_df['VrednostAlkotesta'].astype(float)
+osebniF_df['VrednostStrokovnegaPregleda'] = osebniF_df['VrednostStrokovnegaPregleda'].astype(float)
 osebniF_df.to_csv('baze/manjse/FaktorOseb.csv', index=False)
 
 # o osebi
