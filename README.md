@@ -4,6 +4,8 @@
 
 **Podatki:** Za bazo podatkov smo uporabili analizo prometne varnosti za leto 2022. V bazi so združeni vsi podatki o prometnih nesrečah in udeleženih osebah, ki so nastopale kot povzročitelj ali poškodovanec/žrtev. Baza zajema vse prometne nesreče, ki si jih je ogledala in analizirala policija. V bazi podatkov smo zasledili tudi nekaj napak pri vnosu, in sicer pri formatiranju določenih podatkov. Celotno ločevanje podatkov in popravljanje formatiranja podatkov smo opravili pred analizami in vizualizacijami.
 
+<br/>
+
 ### Ločevanje podatkov za obdelavo (`locevanje_tabel.py`):
 Zaradi velike količine podatkov smo celotno podatkovno bazo ločili na manjše, bolj obvladljive in modularne tabele. To smo naredili z razlogom olajšanja upravljanja s podatki in vizualizacijami podatkov. Podatke smo ločili z uporabo zgoraj navedene datoteke. Bazo smo ločili na 9 različnih tabel: 
 - `Splosno.csv` (klasifikacija nesreče),  
@@ -17,6 +19,8 @@ Zaradi velike količine podatkov smo celotno podatkovno bazo ločili na manjše,
 - `Osebe.csv` (povzročitelj/udeleženec, starost, spol, državljanstvo, vrsta udeleženega, poškodba, vozni staz v mesecih). 
 Pri vseh tabelah smo za Id uporabili VPN šifre, kajti te so edine unikatne.
 Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komentarje v `locevanje_tabel.py`.
+
+<br/>
 
 ### Izvedene analize:
 
