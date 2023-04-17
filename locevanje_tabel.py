@@ -22,9 +22,12 @@ month_dict={'jan':'01', 'feb':'02', 'mar':'03', 'apr':'04', 'maj':'05', 'jun':'0
 for key in month_dict.keys():
     df['UraPN'] = df['UraPN'].str.replace(f'{key}.', f'{month_dict[key]}.')
     df['UraPN'] = df['UraPN'].str.replace(f'.{key}', f'.{month_dict[key]}')
-    
+   
 df['UraPN'] = pd.to_datetime(df['UraPN'], format='%H.%M', errors='coerce')
-df['UraPN'] = df['UraPN'].dt.strftime('%H.%M')
+try:
+    df['UraPN'] = pd.to_datetime(df['UraPN'], format='%H.%M').dt.strftime('%H.%M')
+except ValueError:
+    df['UraPN'] = '00.00'
 
 time_df=df[['ZaporednaStevilkaOsebeVPN','DatumPN','UraPN']]
 time_df.to_csv('baze/manjse/Cas.csv', index=False)
