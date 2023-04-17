@@ -15,17 +15,29 @@ Zaradi velike količine podatkov, smo celotno podatkovno bazo ločili na manjše
 - `FaktorCest.csv` (stanje prometa in vozišča, vrsta vozišča in vremenske okoliščine), 
 - `FaktorOseb.csv` (uporaba varnostnega pasu, vsebnost alkohola, vrednost strokovnega pregleda),
 - `Osebe.csv` (povzročitelj/udeleženec, starost, spol, državljanstvo, vrsta udeleženega, poškodba, vozni staz v mesecih). 
+Pri vseh tabelah smo za Id uporabili VPN šifre, kajti te so edine unikatne.
 Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komentarje v `locevanje_tabel.py`.
 
 ### Izvedene analize:
 
-**posledice prometnih nesreč**
+##### Opomba: vsaka analiza je vsebovana v svoji datoteki!
 
-**pogostost prometnih nesreč po sloveniji**
+<!-- pogledu kaj so tipi posledic pri pn, določu barve, pobarvu lokacije tiste barve kukr je tip posledic -->
+**posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah. 
+Vsebovanih je 5 kategorij: 
+- 0 - Brez poškodbe, 
+- 1 - Lažja telesna poškodba, 
+- 2 - Huda telesna poškodba, 
+- 3 - Smrt, 
+- 4 - Brez poškodbe-UZ (zelo podobno 0, uporabljata isto barvo)
+Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako dobimo predstavo v katerih delih Slovenije je prišlo do lažjih/hujših prometnih nesreč.
 
-**vremenske okoliščine pri prometnih nesrečah**
+<!-- uzeu use prometne in jih fuknu u eno mapo -->
+**pogostost prometnih nesreč po sloveniji:** 
 
-**Količina (procentualno) nesreč zjutraj, popoldne in zvečer**
+**vremenske okoliščine pri prometnih nesrečah:**
+
+**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:**
 
 ```python
 # tle bo koda od analize podatkov
