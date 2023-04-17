@@ -18,6 +18,15 @@ Zaradi velike količine podatkov, smo celotno podatkovno bazo ločili na manjše
 Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komentarje v `locevanje_tabel.py`.
 
 ### Izvedene analize:
+
+**posledice prometnih nesreč**
+
+**pogostost prometnih nesreč po sloveniji**
+
+**vremenske okoliščine pri prometnih nesrečah**
+
+**Količina (procentualno) nesreč zjutraj, popoldne in zvečer**
+
 ```python
 # tle bo koda od analize podatkov
 ```
