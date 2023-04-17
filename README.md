@@ -20,7 +20,7 @@ Za bolj podrobno razlago kako se vse te stvari izvajajo si lahko preberete komen
 
 ### Izvedene analize:
 
-<span style="color:red">Opomba: vsaka analiza je vsebovana v svoji datoteki!</span>
+<p><span style="color:red">Opomba: vsaka analiza je vsebovana v svoji datoteki!</span></p>
 
 <!-- pogledu kaj so tipi posledic pri pn, določu barve, pobarvu lokacije tiste barve kukr je tip posledic -->
 **posledice prometnih nesreč:** Pri tej analizi smo si ogledali kateri tipi posledic so kategorizirani pri prometnih nesrečah. 
