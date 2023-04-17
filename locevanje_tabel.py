@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Read in the data from the original file
+# preberemo celotno tabelo podatkov
 df = pd.read_csv('baze\pn2022.csv', delimiter=';')
 
 # koordinate tabela
