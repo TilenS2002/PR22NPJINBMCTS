@@ -2,10 +2,10 @@
 
 **Problem:** Prometne nesreče so velik povzročitelj fizičnih poškodb in smrti v Sloveniji.
 
-**Podatki:** Za bazo podatkov smo uporabili analizo prometne varnosti za leto 2022. V bazi so združeni vsi podatki o prometnih nesrečah in udeleženih osebah, katere so nastopale kot povzročitelj ali poškodovanec/žrtev. Baza zajema vse prometne nesreče katere si je ogledala in analizirala policija. V bazi podatkov, smo zasledili tudi nekaj napak pri vnosu, in sicer pri formatiranju določenih podatkov. Celotno ločevanje podatkov in popravljanje formatiranja podatkov smo opravili pred analizami in vizualizacijami.
+**Podatki:** Za bazo podatkov smo uporabili analizo prometne varnosti za leto 2022. V bazi so združeni vsi podatki o prometnih nesrečah in udeleženih osebah, ki so nastopale kot povzročitelj ali poškodovanec/žrtev. Baza zajema vse prometne nesreče, ki si jih je ogledala in analizirala policija. V bazi podatkov smo zasledili tudi nekaj napak pri vnosu, in sicer pri formatiranju določenih podatkov. Celotno ločevanje podatkov in popravljanje formatiranja podatkov smo opravili pred analizami in vizualizacijami.
 
 ### Ločevanje podatkov za obdelavo (`locevanje_tabel.py`):
-Zaradi velike količine podatkov, smo celotno podatkovno bazo ločili na manjše, bolj obvladljive in modularne tabele. To smo naredili z razlogom olajšanja upravljanja s podatki in vizualizacijami podatkov. Podatke smo ločili z uporabo zgoraj navedene datoteke. Bazo smo ločili na 9 različnih tabel: 
+Zaradi velike količine podatkov smo celotno podatkovno bazo ločili na manjše, bolj obvladljive in modularne tabele. To smo naredili z razlogom olajšanja upravljanja s podatki in vizualizacijami podatkov. Podatke smo ločili z uporabo zgoraj navedene datoteke. Bazo smo ločili na 9 različnih tabel: 
 - `Splosno.csv` (klasifikacija nesreče),  
 - `Kraj.csv` (vsebuje glavne podatek o krajih), 
 - `Cas.csv` (vsebuje datum in čas), 
