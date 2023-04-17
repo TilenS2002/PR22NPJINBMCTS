@@ -39,6 +39,15 @@ Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako
 
 <!--  -->
 **Vremenske okoliščine pri prometnih nesrečah:** 
+Vsebovanih je 7 kategorij: 
+- 0 - Jasno, 
+- 1 - Veter, 
+- 2 - Oblačno, 
+- 3 - Deževno, 
+- 4 - Sneg, 
+- 5 - Toča, 
+- 6 - Megla
+Tudi tukaj smo vsaki kategoriji določili svojo barvo in nesreče označili po lokacijah. Tako lahko iz grafa razberemo, v kakšnem vremenu so se zgodile nesreče in ali je na katerih lokacijah imelo vreme večji vpliv kot drugje.
 
 <!--  -->
 **Količina (procentualno) nesreč zjutraj, popoldne in zvečer:** 
