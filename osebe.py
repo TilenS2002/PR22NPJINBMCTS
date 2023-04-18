@@ -33,14 +33,15 @@ stat_st= len(stari_voznik)/len((povzrocitelj['MeseciIzpita'] > 0))*100
 print(f"Procent nesreč, ki jih je povzročil mladi voznik: {stat_ml:.2f}%")
 print(f"Procent nesreč, ki jih je povzročil stari voznik: {stat_st:.2f}%")
 
-
-
-
+####################################################################################################################
+#                                                                                                                  #
+#               ali je bolj izkusen voznik veckrat v nesreči zaradi neprilagojene hitrosti?                        #
+#                                                                                                                  #
+####################################################################################################################
 
 # preberemo datoteke
 problemi_df = pd.read_csv("baze/manjse/Nesreca.csv")
 
-# pobere use voznike useh starosti katerih vzrok nesreče je "NEPRILAGOJENA HITROST"
 skupi = pd.merge(povzrocitelj, problemi_df, on='ZaporednaStevilkaOsebeVPN')
 
 test = skupi[skupi['VzrokNesrece'].str.contains('NEPRILAGOJENA HITROST')]
@@ -63,21 +64,37 @@ plt.annotate('p = {:.2e}'.format(p_value_h), xy=(0.65, 0.88) , xycoords='axes fr
 
 plt.show()
 
+#############################################################################################################
+#                                                                                                           #
+#                               katera skupina večkrat ne upošteva cestnih pravil?                          #
+#                                                                                                           #
+#############################################################################################################
 
+sitnFolk = skupi[skupi['VzrokNesrece'].str.contains('NEUPOŠTEVANJE PRAVIL O PREDNOSTI')]
+meseci_izpita_counts_porednezi = sitnFolk['MeseciIzpita'].value_counts().sort_index()
 
-# mask_leto_izpita = (povzrocitelj['MeseciIzpita'] > 0) & (povzrocitelj['MeseciIzpita'] <= 12)
-# mask_leti2_voznik = (povzrocitelj['MeseciIzpita'] > 12) & (povzrocitelj['MeseciIzpita'] <= 24)
-# mask_med_2_in_5 = (povzrocitelj['MeseciIzpita'] > 24) & (povzrocitelj['MeseciIzpita'] <= 60)
-# mask_med_5_in_10 = (povzrocitelj['MeseciIzpita'] > 50) & (povzrocitelj['MeseciIzpita'] <= 120)
-# mask_med_10_in_20 = (povzrocitelj['MeseciIzpita'] > 120) & (povzrocitelj['MeseciIzpita'] <= 240)
-# mask_vec_kot_20 = povzrocitelj['MeseciIzpita'] > 240
+mask_leto_izpita = (sitnFolk['MeseciIzpita'] > 0) & (sitnFolk['MeseciIzpita'] <= 12)
+mask_leti2_voznik = (sitnFolk['MeseciIzpita'] > 12) & (sitnFolk['MeseciIzpita'] <= 24)
+mask_med_2_in_5 = (sitnFolk['MeseciIzpita'] > 24) & (sitnFolk['MeseciIzpita'] <= 60)
+mask_med_5_in_10 = (sitnFolk['MeseciIzpita'] > 50) & (sitnFolk['MeseciIzpita'] <= 120)
+mask_med_10_in_20 = (sitnFolk['MeseciIzpita'] > 120) & (sitnFolk['MeseciIzpita'] <= 240)
+mask_vec_kot_20 = sitnFolk['MeseciIzpita'] > 240
 
-# leto_izpita = povzrocitelj[mask_leto_izpita]
-# leti2_voznik = povzrocitelj[mask_leti2_voznik]
-# med_2_in_5 = povzrocitelj[mask_med_2_in_5]
-# med_5_in_10 = povzrocitelj[mask_med_5_in_10]
-# med_10_in_20 = povzrocitelj[mask_med_10_in_20]
-# vec_kot_20 = povzrocitelj[mask_vec_kot_20]
+leto_izpita = sitnFolk[mask_leto_izpita]
+leti2_voznik = sitnFolk[mask_leti2_voznik]
+med_2_in_5 = sitnFolk[mask_med_2_in_5]
+med_5_in_10 = sitnFolk[mask_med_5_in_10]
+med_10_in_20 = sitnFolk[mask_med_10_in_20]
+vec_kot_20 = sitnFolk[mask_vec_kot_20]
+
+layout = [leto_izpita['MeseciIzpita'].count(), leti2_voznik['MeseciIzpita'].count(), med_2_in_5['MeseciIzpita'].count(), med_5_in_10['MeseciIzpita'].count(), med_10_in_20['MeseciIzpita'].count(), vec_kot_20['MeseciIzpita'].count()]
+grupe = ["1 leto", "2 leti", "2 - 5 let", "5 - 10 let", "10 - 20 let", "vec kot 20 let"]
+
+plt.bar(grupe, layout, color='grey')
+plt.title('Količina PN zaradi neupoštevanja pravil o prednosti, po starostnih skupinah')
+plt.xlabel('Starostne skupine')
+plt.ylabel('količina')
+plt.show()
 
 # print("Length of leto_izpita:", len(leto_izpita))
 # print("Length of leti2_voznik:", len(leti2_voznik))
@@ -171,5 +188,60 @@ ax.set_title('Udeleženci v prometni nesreči',y=1.08)
 
 # adjust the spacing between subplots to move the pie chart to the left
 plt.subplots_adjust(top=0.85)
-
 plt.show()
+
+
+
+
+######################################################################################################################################
+#                                                                                                                                    #
+#                               Ali spol in starost res vplivata na kakovost voznika?                                                #
+#                                                                                                                                    #
+######################################################################################################################################
+
+starost_counts_porednezi = skupi['Starost'].value_counts().sort_index()
+
+mask_18_25 = (skupi['Starost'] >= 18) & (skupi['Starost'] <= 25)
+mask_25_30 = (skupi['Starost'] > 25) & (skupi['Starost'] <= 30)
+mask_30_39 = (skupi['Starost'] > 30) & (skupi['Starost'] <= 39)
+mask_40_49 = (skupi['Starost'] > 39) & (skupi['Starost'] <= 49)
+mask_50_59 = (skupi['Starost'] > 49) & (skupi['Starost'] <= 59)
+mask_60_69 = (skupi['Starost'] > 59) & (skupi['Starost'] <= 69)
+mask_vec_kot_70 = (skupi['Starost'] > 69)
+
+e_18_25 = skupi[mask_18_25]
+e_25_30 = skupi[mask_25_30]
+e_30_39 = skupi[mask_30_39]
+e_40_49 = skupi[mask_40_49]
+e_50_59 = skupi[mask_50_59]
+e_60_69 = skupi[mask_60_69]
+vec_ku_70 = skupi[mask_vec_kot_70]
+
+starSkupine = [e_18_25['Starost'].count(), e_25_30['Starost'].count(), e_30_39['Starost'].count(), e_40_49['Starost'].count(), e_50_59['Starost'].count(), e_60_69['Starost'].count(), vec_ku_70['Starost'].count()]
+# print(starSkupine)
+StarLabli = ["18 - 25 let", "25 - 30 let", "30 - 39 let", "40 - 49 let", "50 - 59 let", "60 - 69 let", "vec kot 70 let"]
+
+plt.bar(StarLabli, starSkupine, color='grey')
+plt.title('Količina PN po starostnih skupinah')
+plt.xlabel('Starostne skupine')
+plt.ylabel('količina')
+plt.show()
+
+M18_25 = e_18_25[e_18_25['Spol'].str.contains('MOŠKI')].count()
+Z18_25 = e_18_25[e_18_25['Spol'].str.contains('ŽENSKI')].count()
+
+
+mzPN = [M18_25['Spol'], Z18_25['Spol']]
+listic = ["Moški", "Ženske"]
+
+plt.bar(listic, mzPN, color='grey')
+plt.title('Količina PN po spolu v starostni skupini 18 - 25')
+plt.xlabel('Spol')
+plt.ylabel('količina')
+plt.show()
+
+
+# print("Moški vdeleženci v PN: ",M18_25['Spol'])
+# print("Ženske vdeleženke v PN: ",Z18_25['Spol'])
+
+

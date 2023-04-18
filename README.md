@@ -39,9 +39,6 @@ Vsebovanih je 5 kategorij:
 
 Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako dobimo predstavo v katerih delih Slovenije je prišlo do lažjih/hujših prometnih nesreč.
 
-<!-- uzeu use prometne in jih fuknu u eno mapo -->
-**Pogostost prometnih nesreč po sloveniji:** 
-
 
 **Vremenske okoliščine pri prometnih nesrečah:** Ogledali smo si kakšno je bilo vreme, ko se je zgodila prometna nesreča.  
 Vsebovanih je 7 kategorij: 
@@ -56,16 +53,44 @@ Vsebovanih je 7 kategorij:
 Tudi tukaj smo vsaki kategoriji določili svojo barvo in nesreče označili po lokacijah. Tako lahko iz grafa razberemo, v kakšnem vremenu so se zgodile nesreče in ali je na katerih lokacijah imelo vreme večji vpliv kot drugje.
 
 <!--  -->
-**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:** 
+**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:**
+Dan razdeljen na 3 obdobja (jutro, popoldne, zvečer), nato datume razporedimo po dnevih tedna. Ustvarili smo heatmap na katerem je razvidno, da je bilo največ prometnih nesreč ob petkih popoldne.
 
-```python
-# tle bo morde koda od analize podatkov
-```
+
+#### Vprašanja / glavni cilji:
+
+**1. vprašanje? Kako oseba vpliva na nesrečo?**
+podvprašanja:
+Ali izkušnje na cesti oz. obdobje imetja izpita vpliva na število povzročenih nesreč?
+Ali je bolj izkušen voznik večkrat v nesreči zaradi neprilagojene hitrosti? katera skupina večkrat ne upošteva cestnih pravil?
+Ali spol in starost res vplivata na kakovost voznika?
+Ali mladi udeleženci res povzročijo številčnejše število nesreč kot ostali udeleženci? So to morda starejši?
+
+
+**2. vprašanje? Ali vreme in cestišče vpliva na nesrečo?**
+podvprašanja:
+Ali čas dneva in dan v tednu vplivata na število nesreč? Ali nekateri dnevi npr. petek, sobota izstopajo z alkoholom?
+V katerem letnem času je največ nesreč? ali na le te vpliva vreme?
+Katere nesreče so najbolj pogoste v vremenih kot sta sneg in megla?
+Kateri tipi ceste so najbolj nevarni?
+
+
+**3. vprašanje? Vozilo in poškodba**
+podvprašanja:
+Ali je poškodba odvisna od vozila povzročitelja?
+Kako se razlikujejo poškodbe udeležencev glede na tip udeležbe(pešec, kolesar, motor itd.)?
+Kateri so najpogostejši udeleženci nesreče?
+Ali je lahko razvidno kakšna nesreča največkrat pripelje do smrti?
+Ali uporaba varnostnega pasu vpliva na izvid poškodbe?
+
+<br/>
 
 ### Glavne ugotovitve in rezultati:
 
 #### Ugotovitve:
-še pride
+Po večjem delu in obdelavi podatkov smo preko več poizvedb zasledili korelacije med podatki, katere bi pričakovali
+iz realnih okoliščin. Vse od izkušenj, starosti in do vremenskih ter cestnih razmer nam je podalo rezultate skladne 
+z resničnimi vzroki prometnih nesreč.
 
 #### Rezultati:
-še pride
+Z obdelavo numeričnih rezultatov smo dobili grafično predstavitev katera lepo prikazuje stanje prometnih razmer v Sloveniji. Prikazali smo jih z scatter ploti, toplotnimi zemljevidi iz katerih dobimo lažje berljive podatke/informacije.
