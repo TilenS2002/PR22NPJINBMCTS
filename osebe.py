@@ -26,6 +26,54 @@ stat_st= len(stari_voznik)/len((povzrocitelj['MeseciIzpita'] > 0))*100
 print(f"Procent nesreč, ki jih je povzročil mladi voznik: {stat_ml:.2f}%")
 print(f"Procent nesreč, ki jih je povzročil stari voznik: {stat_st:.2f}%")
 
+
+
+
+
+# preberemo datoteke
+problemi_df = pd.read_csv("baze/manjse/Nesreca.csv")
+
+# pobere use voznike useh starosti katerih vzrok nesreče je "NEPRILAGOJENA HITROST"
+skupi = pd.merge(povzrocitelj, problemi_df, on='ZaporednaStevilkaOsebeVPN')
+
+test = skupi[skupi['VzrokNesrece'].str.contains('NEPRILAGOJENA HITROST')]
+meseci_izpita_counts_hitrost = test['MeseciIzpita'].value_counts().sort_index()
+
+print(test)
+print(meseci_izpita_counts_hitrost)
+
+# nwm kaj nej s tm
+# plt.bar(test['VzrokNesrece'], test['MeseciIzpita'])
+# plt.show()
+
+# korelacijski koeficient in vrednost-P
+corr_coef, p_value = pearsonr(meseci_izpita_counts_hitrost, meseci_izpita_counts_hitrost.index)
+print(f"Correlation coefficient: {corr_coef:.2f}")
+print('P-value:',p_value)
+
+
+
+#graf dobljenih rezultatov
+sns.set_style('whitegrid')
+sns.regplot(x=meseci_izpita_counts_hitrost.index, y=meseci_izpita_counts_hitrost,scatter_kws={'color': 'grey'}, line_kws={'color': 'orange'})
+plt.title('Razmerje med meseci izpita povzročitelja in številom nesreč')
+plt.xlabel('Meseci izpita')
+plt.ylabel('Stevilo nesrec')
+
+plt.annotate('r = {:.2f}'.format(corr_coef), xy=(0.65, 0.94) , xycoords='axes fraction', fontsize=12)
+plt.annotate('p = {:.2e}'.format(p_value), xy=(0.65, 0.88) , xycoords='axes fraction', fontsize=12)
+
+plt.show()
+
+# katera skupina večkrat ne upošteva cestnih pravil
+
+
+
+
+
+
+
+
 # mask_leto_izpita = (povzrocitelj['MeseciIzpita'] > 0) & (povzrocitelj['MeseciIzpita'] <= 12)
 # mask_leti2_voznik = (povzrocitelj['MeseciIzpita'] > 12) & (povzrocitelj['MeseciIzpita'] <= 24)
 # mask_med_2_in_5 = (povzrocitelj['MeseciIzpita'] > 24) & (povzrocitelj['MeseciIzpita'] <= 60)
