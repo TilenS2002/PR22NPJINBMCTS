@@ -42,7 +42,7 @@ Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako
 <!-- uzeu use prometne in jih fuknu u eno mapo -->
 **Pogostost prometnih nesreč po sloveniji:** 
 
-<!--  -->
+
 **Vremenske okoliščine pri prometnih nesrečah:** Ogledali smo si kakšno je bilo vreme, ko se je zgodila prometna nesreča.  
 Vsebovanih je 7 kategorij: 
 - 0 - Jasno, 
