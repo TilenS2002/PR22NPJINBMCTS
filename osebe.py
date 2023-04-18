@@ -11,6 +11,13 @@ povzrocitelj = df[mask_povzrocitelj]
 mask_udelezenec = (df['Povzrocitelj'] == 'UDELEŽENEC')
 udelezenec = df[mask_udelezenec]
 
+
+##############################################################################################################################################################
+###                                                              POVZROČITELJI                                                                             ###
+##############################################################################################################################################################
+
+
+
 mask_mladi_voznik = (povzrocitelj['MeseciIzpita'] > 0) & (povzrocitelj['MeseciIzpita'] <= 24)
 mladi_voznik = povzrocitelj[mask_mladi_voznik]
 
@@ -39,38 +46,22 @@ skupi = pd.merge(povzrocitelj, problemi_df, on='ZaporednaStevilkaOsebeVPN')
 test = skupi[skupi['VzrokNesrece'].str.contains('NEPRILAGOJENA HITROST')]
 meseci_izpita_counts_hitrost = test['MeseciIzpita'].value_counts().sort_index()
 
-print(test)
-print(meseci_izpita_counts_hitrost)
-
-# nwm kaj nej s tm
-# plt.bar(test['VzrokNesrece'], test['MeseciIzpita'])
-# plt.show()
-
 # korelacijski koeficient in vrednost-P
-corr_coef, p_value = pearsonr(meseci_izpita_counts_hitrost, meseci_izpita_counts_hitrost.index)
-print(f"Correlation coefficient: {corr_coef:.2f}")
-print('P-value:',p_value)
+corr_coef_h, p_value_h = pearsonr(meseci_izpita_counts_hitrost, meseci_izpita_counts_hitrost.index)
+print(f"Correlation coefficient: {corr_coef_h:.2f}")
+print('P-value:',p_value_h)
 
-
-
-#graf dobljenih rezultatov
+#graf dobljenih rezultatov razmera hitrost in leto izpita
 sns.set_style('whitegrid')
 sns.regplot(x=meseci_izpita_counts_hitrost.index, y=meseci_izpita_counts_hitrost,scatter_kws={'color': 'grey'}, line_kws={'color': 'orange'})
-plt.title('Razmerje med meseci izpita povzročitelja in številom nesreč')
+plt.title('Razmerje med meseci izpita povzročitelja in številom nesreč povzročenih zaradi prekomerne hitrosti')
 plt.xlabel('Meseci izpita')
-plt.ylabel('Stevilo nesrec')
+plt.ylabel('Stevilo nesreč')
 
-plt.annotate('r = {:.2f}'.format(corr_coef), xy=(0.65, 0.94) , xycoords='axes fraction', fontsize=12)
-plt.annotate('p = {:.2e}'.format(p_value), xy=(0.65, 0.88) , xycoords='axes fraction', fontsize=12)
+plt.annotate('r = {:.2f}'.format(corr_coef_h), xy=(0.65, 0.94) , xycoords='axes fraction', fontsize=12)
+plt.annotate('p = {:.2e}'.format(p_value_h), xy=(0.65, 0.88) , xycoords='axes fraction', fontsize=12)
 
 plt.show()
-
-# katera skupina večkrat ne upošteva cestnih pravil
-
-
-
-
-
 
 
 
@@ -96,15 +87,11 @@ plt.show()
 # print("Length of vec_kot_20:", len(vec_kot_20))
 
 meseci_izpita_counts = povzrocitelj['MeseciIzpita'].value_counts().sort_index()
-#print(meseci_izpita_counts)
-
 
 # korelacijski koeficient in vrednost-P
 corr_coef, p_value = pearsonr(meseci_izpita_counts, meseci_izpita_counts.index)
 print(f"Correlation coefficient: {corr_coef:.2f}")
 print('P-value:',p_value)
-
-
 
 #graf dobljenih rezultatov
 sns.set_style('whitegrid')
@@ -128,7 +115,6 @@ plt.show()
 # # plt.ylabel('Število nesreč')
 # # plt.show()
 
-
 # # sns.histplot(x=povzrocitelj['Starost'], kde=False)
 # # plt.title('Porazdelitev starosti pri povzročiteljih nesreč')
 # # plt.xlabel('Starost')
@@ -144,12 +130,13 @@ plt.show()
 # # plt.title('Razmerje med starostjo in številom nesreč')
 # # plt.xlabel('Starost')
 # # plt.show()
+
+##############################################################################################################################################################
+###                                                                UDELEŽENCI                                                                              ###
+##############################################################################################################################################################
+
 udelezenec['VrstaUdelezenca'].replace(['VOZNIK LAHKEGA MOTORNEGA VOZILA', 'VOZNIK MOTORNEGA KOLESA', 'VOZNIK MOPEDA DO 25 KM/H', 'VOZNIK MOPEDA'], 'VOZNIKI MOTORNIH VOZIL', inplace=True)
-
-
-
 udelezenci_counts = udelezenec['VrstaUdelezenca'].value_counts()
-
 top10 = udelezenec["VrstaUdelezenca"].value_counts().nlargest(10)
 
 # # Create a bar plot
@@ -184,6 +171,5 @@ ax.set_title('Udeleženci v prometni nesreči',y=1.08)
 
 # adjust the spacing between subplots to move the pie chart to the left
 plt.subplots_adjust(top=0.85)
-
 
 plt.show()
