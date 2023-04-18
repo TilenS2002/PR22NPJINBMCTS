@@ -64,20 +64,33 @@ plt.annotate('p = {:.2e}'.format(p_value_h), xy=(0.65, 0.88) , xycoords='axes fr
 plt.show()
 
 
+# katera skupina večkrat ne upošteva cestnih pravil
 
-# mask_leto_izpita = (povzrocitelj['MeseciIzpita'] > 0) & (povzrocitelj['MeseciIzpita'] <= 12)
-# mask_leti2_voznik = (povzrocitelj['MeseciIzpita'] > 12) & (povzrocitelj['MeseciIzpita'] <= 24)
-# mask_med_2_in_5 = (povzrocitelj['MeseciIzpita'] > 24) & (povzrocitelj['MeseciIzpita'] <= 60)
-# mask_med_5_in_10 = (povzrocitelj['MeseciIzpita'] > 50) & (povzrocitelj['MeseciIzpita'] <= 120)
-# mask_med_10_in_20 = (povzrocitelj['MeseciIzpita'] > 120) & (povzrocitelj['MeseciIzpita'] <= 240)
-# mask_vec_kot_20 = povzrocitelj['MeseciIzpita'] > 240
+sitnFolk = skupi[skupi['VzrokNesrece'].str.contains('NEUPOŠTEVANJE PRAVIL O PREDNOSTI')]
+meseci_izpita_counts_porednezi = sitnFolk['MeseciIzpita'].value_counts().sort_index()
 
-# leto_izpita = povzrocitelj[mask_leto_izpita]
-# leti2_voznik = povzrocitelj[mask_leti2_voznik]
-# med_2_in_5 = povzrocitelj[mask_med_2_in_5]
-# med_5_in_10 = povzrocitelj[mask_med_5_in_10]
-# med_10_in_20 = povzrocitelj[mask_med_10_in_20]
-# vec_kot_20 = povzrocitelj[mask_vec_kot_20]
+mask_leto_izpita = (sitnFolk['MeseciIzpita'] > 0) & (sitnFolk['MeseciIzpita'] <= 12)
+mask_leti2_voznik = (sitnFolk['MeseciIzpita'] > 12) & (sitnFolk['MeseciIzpita'] <= 24)
+mask_med_2_in_5 = (sitnFolk['MeseciIzpita'] > 24) & (sitnFolk['MeseciIzpita'] <= 60)
+mask_med_5_in_10 = (sitnFolk['MeseciIzpita'] > 50) & (sitnFolk['MeseciIzpita'] <= 120)
+mask_med_10_in_20 = (sitnFolk['MeseciIzpita'] > 120) & (sitnFolk['MeseciIzpita'] <= 240)
+mask_vec_kot_20 = sitnFolk['MeseciIzpita'] > 240
+
+leto_izpita = sitnFolk[mask_leto_izpita]
+leti2_voznik = sitnFolk[mask_leti2_voznik]
+med_2_in_5 = sitnFolk[mask_med_2_in_5]
+med_5_in_10 = sitnFolk[mask_med_5_in_10]
+med_10_in_20 = sitnFolk[mask_med_10_in_20]
+vec_kot_20 = sitnFolk[mask_vec_kot_20]
+
+layout = [leto_izpita['MeseciIzpita'].count(), leti2_voznik['MeseciIzpita'].count(), med_2_in_5['MeseciIzpita'].count(), med_5_in_10['MeseciIzpita'].count(), med_10_in_20['MeseciIzpita'].count(), vec_kot_20['MeseciIzpita'].count()]
+grupe = ["1 leto", "2 leti", "2 - 5 let", "5 - 10 let", "10 - 20 let", "vec kot 20 let"]
+
+plt.bar(grupe, layout)
+plt.title('Količina PN zaradi neupoštevanja pravil o prednosti, po starostnih skupinah')
+plt.xlabel('Starostne skupine')
+plt.ylabel('količina')
+plt.show()
 
 # print("Length of leto_izpita:", len(leto_izpita))
 # print("Length of leti2_voznik:", len(leti2_voznik))
@@ -173,3 +186,12 @@ ax.set_title('Udeleženci v prometni nesreči',y=1.08)
 plt.subplots_adjust(top=0.85)
 
 plt.show()
+
+# Ali spol in starost res vplivata na kakovost voznika?
+
+tessstM = skupi[skupi['Spol'].str.contains('MOŠKI')].count()
+
+tessstZ = skupi[skupi['Spol'].str.contains('ŽENSKI')].count()
+
+print(tessstM['Spol'])
+print(tessstZ['Spol'])
