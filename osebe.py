@@ -90,7 +90,7 @@ vec_kot_20 = sitnFolk[mask_vec_kot_20]
 layout = [leto_izpita['MeseciIzpita'].count(), leti2_voznik['MeseciIzpita'].count(), med_2_in_5['MeseciIzpita'].count(), med_5_in_10['MeseciIzpita'].count(), med_10_in_20['MeseciIzpita'].count(), vec_kot_20['MeseciIzpita'].count()]
 grupe = ["1 leto", "2 leti", "2 - 5 let", "5 - 10 let", "10 - 20 let", "vec kot 20 let"]
 
-plt.bar(grupe, layout)
+plt.bar(grupe, layout, color='grey')
 plt.title('Količina PN zaradi neupoštevanja pravil o prednosti, po starostnih skupinah')
 plt.xlabel('Starostne skupine')
 plt.ylabel('količina')
@@ -221,12 +221,11 @@ starSkupine = [e_18_25['Starost'].count(), e_25_30['Starost'].count(), e_30_39['
 # print(starSkupine)
 StarLabli = ["18 - 25 let", "25 - 30 let", "30 - 39 let", "40 - 49 let", "50 - 59 let", "60 - 69 let", "vec kot 70 let"]
 
-plt.bar(StarLabli, starSkupine)
+plt.bar(StarLabli, starSkupine, color='grey')
 plt.title('Količina PN po starostnih skupinah')
 plt.xlabel('Starostne skupine')
 plt.ylabel('količina')
 plt.show()
-
 
 M18_25 = e_18_25[e_18_25['Spol'].str.contains('MOŠKI')].count()
 Z18_25 = e_18_25[e_18_25['Spol'].str.contains('ŽENSKI')].count()
@@ -235,7 +234,7 @@ Z18_25 = e_18_25[e_18_25['Spol'].str.contains('ŽENSKI')].count()
 mzPN = [M18_25['Spol'], Z18_25['Spol']]
 listic = ["Moški", "Ženske"]
 
-plt.bar(listic, mzPN)
+plt.bar(listic, mzPN, color='grey')
 plt.title('Količina PN po spolu v starostni skupini 18 - 25')
 plt.xlabel('Spol')
 plt.ylabel('količina')

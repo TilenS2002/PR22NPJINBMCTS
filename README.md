@@ -62,6 +62,35 @@ Tudi tukaj smo vsaki kategoriji določili svojo barvo in nesreče označili po l
 # tle bo morde koda od analize podatkov
 ```
 
+
+#### Vprašanja:
+
+**1. vprašanje? Kako oseba vpliva na nesrečo?**
+podvprašanja:
+Ali izkušnje na cesti oz. obdobje imetja izpita vpliva na število povzročenih nesreč?
+Ali je bolj izkušen voznik večkrat v nesreči zaradi neprilagojene hitrosti? katera skupina večkrat ne upošteva cestnih pravil?
+Ali spol in starost res vplivata na kakovost voznika?
+Ali mladi udeleženci res povzročijo številčnejše število nesreč kot ostali udeleženci? So to morda starejši?
+
+
+**2. vprašanje? Ali vreme in cestišče vpliva na nesrečo?**
+podvprašanja:
+Ali čas dneva in dan v tednu vplivata na število nesreč? Ali nekateri dnevi npr. petek, sobota izstopajo z alkoholom?
+V katerem letnem času je največ nesreč? ali na le te vpliva vreme?
+Katere nesreče so najbolj pogoste v vremenih kot sta sneg in megla?
+Kateri tipi ceste so najbolj nevarni?
+
+
+**3. vprašanje? Vozilo in poškodba**
+podvprašanja:
+Ali je poškodba odvisna od vozila povzročitelja?
+Kako se razlikujejo poškodbe udeležencev glede na tip udeležbe(pešec, kolesar, motor itd.)?
+Kateri so najpogostejši udeleženci nesreče?
+Ali je lahko razvidno kakšna nesreča največkrat pripelje do smrti?
+Ali uporaba varnostnega pasu vpliva na izvid poškodbe?
+
+<br/>
+
 ### Glavne ugotovitve in rezultati:
 
 #### Ugotovitve:
