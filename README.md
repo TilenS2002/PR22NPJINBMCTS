@@ -39,9 +39,6 @@ Vsebovanih je 5 kategorij:
 
 Vsaki kategoriji smo določili svojo barvo, ter jih označili po lokacijah. Tako dobimo predstavo v katerih delih Slovenije je prišlo do lažjih/hujših prometnih nesreč.
 
-<!-- uzeu use prometne in jih fuknu u eno mapo -->
-**Pogostost prometnih nesreč po sloveniji:** 
-
 
 **Vremenske okoliščine pri prometnih nesrečah:** Ogledali smo si kakšno je bilo vreme, ko se je zgodila prometna nesreča.  
 Vsebovanih je 7 kategorij: 
@@ -56,14 +53,11 @@ Vsebovanih je 7 kategorij:
 Tudi tukaj smo vsaki kategoriji določili svojo barvo in nesreče označili po lokacijah. Tako lahko iz grafa razberemo, v kakšnem vremenu so se zgodile nesreče in ali je na katerih lokacijah imelo vreme večji vpliv kot drugje.
 
 <!--  -->
-**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:** 
-
-```python
-# tle bo morde koda od analize podatkov
-```
+**Količina (procentualno) nesreč zjutraj, popoldne in zvečer:**
+Dan razdeljen na 3 obdobja (jutro, popoldne, zvečer), nato datume razporedimo po dnevih tedna. Ustvarili smo heatmap na katerem je razvidno, da je bilo največ prometnih nesreč ob petkih popoldne.
 
 
-#### Vprašanja:
+#### Vprašanja / glavni cilji:
 
 **1. vprašanje? Kako oseba vpliva na nesrečo?**
 podvprašanja:
@@ -94,7 +88,9 @@ Ali uporaba varnostnega pasu vpliva na izvid poškodbe?
 ### Glavne ugotovitve in rezultati:
 
 #### Ugotovitve:
-še pride
+Po večjem delu in obdelavi podatkov smo preko več poizvedb zasledili korelacije med podatki, katere bi pričakovali
+iz realnih okoliščin. Vse od izkušenj, starosti in do vremenskih ter cestnih razmer nam je podalo rezultate skladne 
+z resničnimi vzroki prometnih nesreč.
 
 #### Rezultati:
-še pride
+Z obdelavo numeričnih rezultatov smo dobili grafično predstavitev katera lepo prikazuje stanje prometnih razmer v Sloveniji. Prikazali smo jih z scatter ploti, toplotnimi zemljevidi iz katerih dobimo lažje berljive podatke/informacije.
