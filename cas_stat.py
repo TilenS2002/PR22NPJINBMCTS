@@ -48,9 +48,9 @@ heatmap_df = heatmap_df.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', '
 
 sns.set(font_scale=1.2)
 fig, ax = plt.subplots(figsize=(10,7))
-sns.heatmap(heatmap_df, cmap='Blues', annot=True, fmt='d', cbar=False, ax=ax)
+sns.heatmap(heatmap_df, cmap='Oranges', annot=True, fmt='d', cbar=False, ax=ax)
 ax.set_xlabel('')
 ax.set_ylabel('')
-ax.set_title('Number of Accidents by Time of Day and Day of Week', fontsize=16, pad=20)
+ax.set_title('Število nesreč v razmerju časa dneva in dneva v tednu', fontsize=16, pad=20)
 plt.tight_layout()
 plt.show()
