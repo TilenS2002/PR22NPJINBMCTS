@@ -2,32 +2,58 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+
 # load the data
 df = pd.read_csv('baze/manjse/FaktorCest.csv')
+df = df[df['StanjePrometa'] != 'NEZNANO']
+df = df[df['VremenskeOkoliscine'] != 'NEZNANO']
+
+# Load the required CSV files
+faktor_cest = pd.read_csv('baze/manjse/FaktorCest.csv')
+nesreca = pd.read_csv('baze/manjse/Nesreca.csv')
+
+# Merge the datasets on the common key
+merged_data = pd.merge(faktor_cest, nesreca, on='ZaporednaStevilkaOsebeVPN')
+merged_data = merged_data[merged_data['VremenskeOkoliscine'] != 'NEZNANO']
+
+# Count the occurrences of each weather category
+weather_counts = merged_data['VremenskeOkoliscine'].value_counts()
+
+# Calculate the percentage of accidents for each weather category
+total_accidents = len(merged_data)
+weather_percentage = weather_counts / total_accidents * 100
+
+# Display the percentage of accidents for each weather category
+print(weather_percentage)
+
+
 
 
 # df.fillna("unknown", inplace=True)
 
-# # Define a function to plot a stacked bar chart
-# def plot_stacked_bar(data, x, y, categories, title):
-#     # Create a pivot table to aggregate the data by category
-#     pivot_table = data.pivot_table(index=x, columns=categories, values=y, aggfunc="count", fill_value=0)
+# Define a function to plot a stacked bar chart
+def plot_stacked_bar(data, x, categories, title):
+    # Create a pivot table to aggregate the data by category
+    pivot_table = data.pivot_table(index=x, columns=categories, values='ZaporednaStevilkaOsebeVPN', aggfunc='count', fill_value=0)
     
-#     # Create the stacked bar chart
-#     pivot_table.plot(kind="bar", stacked=True)
-#     plt.xlabel(x)
-#     plt.ylabel("Number of Accidents")
-#     plt.title(title)
-#     plt.legend(title=categories, loc="upper left", bbox_to_anchor=(1, 1))
-#     plt.show()
+    # Normalize the data by dividing each value by the total sum
+    normalized_table = pivot_table.div(pivot_table.sum(axis=1), axis=0)
+    
+    # Create the stacked bar chart
+    normalized_table.plot(kind="bar", stacked=True, figsize=(10, 6))
+    plt.xlabel(x)
+    plt.ylabel("Normalized Frequency")
+    plt.title(title)
+    plt.legend(title=categories, loc="upper left", bbox_to_anchor=(1, 1))
+    plt.show()
 
 
-# plot_stacked_bar(df, "VremenskeOkoliscine", "StanjePrometa","StanjeVozisca", "Weather Conditions and Traffic Density")
+# Plot stacked bar chart for Weather Conditions and Traffic Density
+plot_stacked_bar(df, "VremenskeOkoliscine", "StanjePrometa", "Weather Conditions and Traffic Density")
 
-
-
-
-# plt.figure(figsize=(10,5))
+# # Plot the frequency of Weather Conditions
+# plt.figure(figsize=(10, 5))
 # df['VremenskeOkoliscine'].value_counts().plot(kind='bar')
 # plt.title('Frequency of Weather Conditions')
 # plt.xlabel('Weather Condition')
@@ -55,53 +81,75 @@ df = pd.read_csv('baze/manjse/FaktorCest.csv')
 # plt.ylabel('Frequency')
 # plt.show()
 
-# traffic_by_weather = pd.crosstab(df['VremenskeOkoliscine'], df['StanjePrometa'])
-# traffic_by_weather.plot(kind='bar', stacked=True, figsize=(10,5))
-# plt.title('Traffic by Weather Condition')
-# plt.xlabel('Weather Condition')
-# plt.ylabel('Frequency')
-# plt.show()
+
+# Create a pivot table to count the frequency of each combination of Weather Conditions and Traffic Conditions
+pivot_table = pd.pivot_table(df, values='ZaporednaStevilkaOsebeVPN', index='VremenskeOkoliscine', columns='StanjePrometa', aggfunc=len, fill_value=0)
+# Normalize the pivot table by dividing each value by the sum of values in that row
+normalized_table = pivot_table.div(pivot_table.sum(axis=1), axis=0)
 
 
-# roads_by_weather = pd.crosstab(df['VremenskeOkoliscine'], df['StanjeVozisca'])
-# roads_by_weather.plot(kind='bar', stacked=True, figsize=(10,5))
-# plt.title('Road Situations by Weather Condition')
-# plt.xlabel('Weather Condition')
-# plt.ylabel('Frequency')
-# plt.show()
-
-# road_type_by_weather = pd.crosstab(df['VremenskeOkoliscine'], df['VrstaVozisca'])
-# road_type_by_weather.plot(kind='bar', stacked=True, figsize=(10,5))
-# plt.title('Road Types by Weather Condition')
-# plt.xlabel('Weather Condition')
-# plt.ylabel('Frequency')
-# plt.show()
+# Create a stacked bar chart for Traffic Conditions by Weather Conditions
+normalized_table.plot(kind='bar', stacked=True)
+plt.title("Traffic Conditions by Weather Conditions")
+plt.xlabel("Weather Conditions")
+plt.ylabel("Normalized Frequency")
+plt.show()
 
 
+# Create a pivot table to count the frequency of each combination of Weather Conditions and Road Situations
+pivot_table = pd.pivot_table(df, values='ZaporednaStevilkaOsebeVPN', index='VremenskeOkoliscine', columns='StanjeVozisca', aggfunc=len, fill_value=0)
 
+# Normalize the pivot table by dividing each value by the sum of values in that row
+normalized_table = pivot_table.div(pivot_table.sum(axis=1), axis=0)
 
+# Create a stacked bar chart for Road Situations by Weather Conditions using the normalized data
+normalized_table.plot(kind='bar', stacked=True)
+plt.title("Road Situations by Weather Conditions")
+plt.xlabel("Weather Conditions")
+plt.ylabel("Normalized Frequency")
+plt.show()
 
+# # Create a pivot table to count the frequency of each combination of Weather Conditions and Road Types
+# pivot_table = pd.pivot_table(df, values='ZaporednaStevilkaOsebeVPN', index='VremenskeOkoliscine', columns='VrstaVozisca', aggfunc=len, fill_value=0)
 
+# # Normalize the pivot table by dividing each value by the sum of values in that row
+# normalized_table = pivot_table.div(pivot_table.sum(axis=1), axis=0)
 
-# # Create a pivot table to count the frequency of each combination of VremenskeOkoliscine and StanjePrometa
-# pivot_table = pd.pivot_table(df, values='VrstaVozisca', index='VremenskeOkoliscine', columns='StanjePrometa', aggfunc=len, fill_value=0)
-
-# # Create a stacked bar chart
-# pivot_table.plot(kind='bar', stacked=True)
-
-# # Set the title and axes labels
-# plt.title("Traffic Conditions by Weather Conditions")
+# # Create a stacked bar chart for Road Types by Weather Conditions using the normalized data
+# normalized_table.plot(kind='bar', stacked=True)
+# plt.title("Road Types by Weather Conditions")
 # plt.xlabel("Weather Conditions")
-# plt.ylabel("Number of Occurrences")
-
-# # Show the chart
+# plt.ylabel("Normalized Frequency")
 # plt.show()
 
 
 
 
 
-# Group the data by the four attributes and count the frequency of each combination
+
+
+# Create a pivot table to count the frequency of each combination of VremenskeOkoliscine and StanjePrometa
+pivot_table = pd.pivot_table(df, values='VrstaVozisca', index='VremenskeOkoliscine', columns='StanjePrometa', aggfunc=len, fill_value=0)
+
+# Normalize the pivot table by dividing each value by the sum of values in that row
+normalized_table = pivot_table.div(pivot_table.sum(axis=1), axis=0)
+
+# Create a stacked bar chart
+normalized_table.plot(kind='bar', stacked=True)
+
+# Set the title and axes labels
+plt.title("Traffic Conditions by Weather Conditions")
+plt.xlabel("Weather Conditions")
+plt.ylabel("Number of Occurrences")
+
+# Show the chart
+plt.show()
+
+
+
+
+
+# # Group the data by the four attributes and count the frequency of each combination
 # grouped_data = data.groupby(['VremenskeOkoliscine', 'StanjePrometa', 'StanjeVozisca', 'VrstaVozisca']).size().reset_index(name='count')
 
 # # Create a stacked bar chart

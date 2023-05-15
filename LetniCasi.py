@@ -50,11 +50,12 @@ sns.heatmap(accidents_matrix, cmap='YlOrRd', annot=True, fmt='d', linewidths=0.5
 
 # Customize the plot
 plt.title("Accident Heatmap by Month")
-plt.xlabel("Month")
+plt.xlabel("Mesec")
+plt.ylabel("število nesreč")
 
 
 # Set the x-axis tick labels to display month names
 plt.xticks(range(len(month_labels)), month_labels)
-
+plt.yticks([])
 # Show the heatmap
 plt.show()
