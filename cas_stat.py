@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 # pomen kode: koda, ki ločuje nesreče po jutru, popoldnevu in večeru
 # izpiše: število nesreč procentualno
@@ -25,7 +26,6 @@ skupaj= len(cas_df)
 print(f"zjutraj: {len(morning_df)/ skupaj * 100:.2f}%")
 print(f"popoldne: {len(afternoon_df)/ skupaj * 100:.2f}%")
 print(f"zvečer: {len(evening_df)/ skupaj * 100:.2f}%")
-
 
 
 ## vizualizacija iz katere vidimo da je največ nesreč popovdne, izstopa pa petek popoldne
