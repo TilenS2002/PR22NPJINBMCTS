@@ -29,7 +29,7 @@ merged_df = merged_df.merge(faktor_oseb_df, on='ZaporednaStevilkaOsebeVPN')
 
 print(merged_df.columns)
 
-selected_features = ['UraPN', 'Starost', 'VrstaUdelezenca',
+selected_features = ['UraPN', 'Starost', 'VrstaUdelezenca', 'PoskodbaUdelezenca',
        'MeseciIzpita', 'VzrokNesrece', 'TipNesrece', 'VrstaCesteNaselja',
        'VremenskeOkoliscine', 'StanjePrometa']
 
@@ -39,10 +39,17 @@ X = merged_df[selected_features]
 y = merged_df[target_variable]
 
 #Perform  encoding on categorical variables
-X_encoded = pd.get_dummies(X, columns=['UraPN', 'Starost', 'VrstaUdelezenca',
+X_encoded = pd.get_dummies(X, columns=['UraPN', 'Starost', 'VrstaUdelezenca', 'PoskodbaUdelezenca',
        'MeseciIzpita', 'VzrokNesrece', 'TipNesrece', 'VrstaCesteNaselja',
        'VremenskeOkoliscine', 'StanjePrometa'])
 
+# X_encoded = pd.get_dummies(X, columns=['UraPN', 'Starost',
+#        'MeseciIzpita', 'VrstaCesteNaselja',
+#        'VremenskeOkoliscine', 'StanjePrometa'])
+
+# 'UraPN', 'Starost', 'VrstaUdelezenca',
+#        'MeseciIzpita', 'VzrokNesrece', 'TipNesrece', 'VrstaCesteNaselja',
+#        'VremenskeOkoliscine', 'StanjePrometa']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)

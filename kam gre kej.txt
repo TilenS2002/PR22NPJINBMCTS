@@ -1,0 +1,6 @@
+# 1. vprašanje? Kako oseba vpliva na nesrečo?
+podvprašanja:
+Ali izkušnje na cesti oz. obdobje imetja izpita vpliva na število povzročenih nesreč? --> Osebe.py
+ali je bolj izkusen voznik veckrat v nesreči zaradi neprilagojene hitrosti? katera skupina večkrat ne upošteva cestnih pravil? --> osebe.py
+Ali spol in starost res vplivata na kakovost voznika? --> osebe.py
+Ali mladi udeleženci res povzročijo številčnejše število nesreč kot ustali udeleženci? So to morda starejši?
