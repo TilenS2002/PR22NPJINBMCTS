@@ -63,3 +63,5 @@ classification_rep = classification_report(y_test, y_pred)
 print("Accuracy:", accuracy) #current Accuracy: 0.790845710821461  15.5. 17:40
 print("Classification Report:")
 print(classification_rep)
+
+

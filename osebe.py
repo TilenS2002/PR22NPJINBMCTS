@@ -217,8 +217,15 @@ e_50_59 = skupi[mask_50_59]
 e_60_69 = skupi[mask_60_69]
 vec_ku_70 = skupi[mask_vec_kot_70]
 
-starSkupine = [e_18_25['Starost'].count(), e_25_30['Starost'].count(), e_30_39['Starost'].count(), e_40_49['Starost'].count(), e_50_59['Starost'].count(), e_60_69['Starost'].count(), vec_ku_70['Starost'].count()]
-# print(starSkupine)
+starSkupine = [
+    e_18_25['Starost'].count() / len(skupi),
+    e_25_30['Starost'].count() / len(skupi),
+    e_30_39['Starost'].count() / len(skupi),
+    e_40_49['Starost'].count() / len(skupi),
+    e_50_59['Starost'].count() / len(skupi),
+    e_60_69['Starost'].count() / len(skupi),
+    vec_ku_70['Starost'].count() / len(skupi)
+]# print(starSkupine)
 StarLabli = ["18 - 25 let", "25 - 30 let", "30 - 39 let", "40 - 49 let", "50 - 59 let", "60 - 69 let", "vec kot 70 let"]
 
 plt.bar(StarLabli, starSkupine, color='grey')
@@ -230,8 +237,7 @@ plt.show()
 M18_25 = e_18_25[e_18_25['Spol'].str.contains('MOŠKI')].count()
 Z18_25 = e_18_25[e_18_25['Spol'].str.contains('ŽENSKI')].count()
 
-
-mzPN = [M18_25['Spol'], Z18_25['Spol']]
+mzPN = [M18_25['Spol'] / len(e_18_25), Z18_25['Spol'] / len(e_18_25)]
 listic = ["Moški", "Ženske"]
 
 plt.bar(listic, mzPN, color='grey')

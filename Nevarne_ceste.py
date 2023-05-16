@@ -48,6 +48,9 @@ plt.title('Distribution of Injuries by Road Type')
 plt.show()
 
 
+
+
+
 ############ STATS
 
 
@@ -77,3 +80,27 @@ print("\nProportion of Injury Count by Road Type:")
 print(injury_proportion)
 print("\nMost Frequent Injury by Road Type:")
 print(most_frequent_injury)
+
+# Filter the normalized injury counts to include only fatal injuries
+fatal_injury_proportion = normalized_injury_counts_df['SMRT'].copy()
+
+# Calculate the proportion of fatal injuries by road type
+fatal_injury_proportion /= total_normalized_injury_counts_df
+
+# Sort the fatal injury proportions by the order of accident frequency
+fatal_injury_proportion = fatal_injury_proportion.loc[accident_freq_by_road_type.index]
+
+# Sort the fatal injury proportions in ascending order
+fatal_injury_proportion_sorted = fatal_injury_proportion.sort_values(ascending=True)
+
+# Plot the sorted fatal injury proportions by road type
+plt.figure(figsize=(10, 5))
+fatal_injury_proportion_sorted.plot(kind='bar')
+plt.xlabel('Road Type')
+plt.ylabel('Proportion of Fatal Injuries')
+plt.title('Proportion of Fatal Injuries by Road Type (Sorted Ascending)')
+plt.show()
+
+# Print the sorted fatal injury proportions
+print("Proportion of Fatal Injuries by Road Type (Sorted Ascending):")
+print(fatal_injury_proportion_sorted)
